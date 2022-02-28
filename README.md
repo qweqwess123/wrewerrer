@@ -8,14 +8,14 @@
 
 # Table of contents
 
-- [Добро пожаловать в документацию testblog API](#----testblog-api)
+- [Добро пожаловать в документацию testblog API](#добро-пожаловать-в-документацию-testblog-api)
 - [Об аутентификации и csrf защите](#---csrf-)
-- [Модели](#)
-  - [Модель - Account](#---account)
-  - [Модель - Post](#---post)
-  - [Модель - PostCategory](#---postcategory)
-  - [Модель - PostComment](#---postcomment)
-  - [Модель - PostReaction](#---postreaction)
+- [Модели](#модели)
+  - [Модель - Account](#модель---account)
+  - [Модель - Post](#модель---post)
+  - [Модель - PostCategory](#модель---postcategory)
+  - [Модель - PostComment](#модель---postcomment)
+  - [Модель - PostReaction](#модель---postreaction)
 - [Валидация данных, передаваемых клиентом](#---)
 - [API Методы](#api-)
   - [GET  /api/accounts](#get--apiaccounts)
