@@ -21,7 +21,6 @@
   - [/accounts](#api-методы)
     - [GET  /api/accounts](#get--apiaccounts)
     - [POST: /accounts/](#post-accounts)
-    - [Ответ: 201 Created](#-201-created)
     - [GET /accounts/{id}](#get-accountsid)
     - [GET /accounts/me](#get-accountsme)
     - [PATCH /accounts/{id} или PATCH /accounts/me](#patch-accountsid--patch-accountsme)
