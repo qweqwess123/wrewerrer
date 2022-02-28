@@ -19,29 +19,29 @@
 - [Валидация данных, передаваемых клиентом](#об-аутентификации-и-csrf-защите)
 - [API Методы](#api-методы)
   - [/accounts](#api-методы)
-    - [GET  /api/accounts](#get--apiaccounts)
-    - [POST: /accounts/](#post-accounts)
-    - [GET /accounts/{id}](#get-accountsid)
-    - [GET /accounts/me](#get-accountsme)
+    - [GET   /api/accounts](#get--apiaccounts)
+    - [POST  /accounts/](#post-accounts)
+    - [GET   /accounts/{id}](#get-accountsid)
+    - [GET   /accounts/me](#get-accountsme)
     - [PATCH /accounts/{id} или PATCH /accounts/me](#patch-accountsid--patch-accountsme)
-    - [GET /accounts/login](#get-accountslogin)
-    - [GET /accounts/logout](#get-accountslogout)
+    - [GET   /accounts/login](#get-accountslogin)
+    - [GET   /accounts/logout](#get-accountslogout)
    - [/posts](#posts)
-     - [GET /posts](#get-posts)
-     - [POST /posts](#post-posts)
+     - [GET   /posts](#get-posts)
+     - [POST  /posts](#post-posts)
      - [PATCH /posts](#patch-posts)
-     - [GET /posts/{id}](#get-postsid)
+     - [GET   /posts/{id}](#get-postsid)
      - [PATCH /posts/{id}](#patch-postsid)
   - [/comments](#comments)
-    - [GET /comments](#get-comments)
-    - [POST /comments](#post-comments)
-    - [GET /comments/{id}](#get-commentsid)
+    - [GET   /comments](#get-comments)
+    - [POST  /comments](#post-comments)
+    - [GET   /comments/{id}](#get-commentsid)
     - [PATCH /comments/{id}](#patch-commentsid)
     - [DELETE /comments/{id}](#delete-commentsid)
   - [/reactions](#reactions)
-    - [GET /reactions](#get-reactions)
-    - [POST /reactions](#post-reactions)
-    - [GET /reactions/{id}](#get-reactionsid)
+    - [GET   /reactions](#get-reactions)
+    - [POST  /reactions](#post-reactions)
+    - [GET   /reactions/{id}](#get-reactionsid)
     - [DELETE /reactions/{id}](#delete-reactionsid)
 
 # Об аутентификации и csrf защите
@@ -157,7 +157,7 @@
 ## /accounts
 Метод используется для работы с данными модели Account а так же авторизации и деавторизации пользователей
 
-### GET  /api/accounts
+### GET  /accounts
 Возвращает список аккаунтов c полями модели Account
 Если запрос совершает не персонал, то поля  **email**, **is_active**  исключаются, а неактивные пользователи `(is_active=False)` не отображаются
 
