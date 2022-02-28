@@ -23,7 +23,7 @@
     - [POST  /accounts/](#post-accounts)
     - [GET   /accounts/{id}](#get-accountsid)
     - [GET   /accounts/me](#get-accountsme)
-    - [PATCH /accounts/{id} или PATCH /accounts/me](#patch-accountsid--patch-accountsme)
+    - [PATCH /accounts/{id} или PATCH /accounts/me](#patch-accountsid-или-patch-accountsme)
     - [GET   /accounts/login](#get-accountslogin)
     - [GET   /accounts/logout](#get-accountslogout)
    - [/posts](#posts)
