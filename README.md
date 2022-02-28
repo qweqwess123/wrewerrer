@@ -27,13 +27,13 @@
     - [PATCH /accounts/{id} или PATCH /accounts/me](#patch-accountsid--patch-accountsme)
     - [GET /accounts/login](#get-accountslogin)
     - [GET /accounts/logout](#get-accountslogout)
-   - [posts](#posts)
+   - [/posts](#posts)
      - [GET /posts](#get-posts)
      - [POST /posts](#post-posts)
      - [PATCH /posts](#patch-posts)
      - [GET /posts/{id}](#get-postsid)
      - [PATCH /posts/{id}](#patch-postsid)
-  - [comments](#comments)
+  - [/comments](#comments)
     - [GET /comments](#get-comments)
     - [POST /comments](#post-comments)
     - [GET /comments/{id}](#get-commentsid)
@@ -248,7 +248,7 @@
 ## GET /accounts/logout
 Деавторизует пользователя, возвращая **204 No Content**. Если пользователь не был авторизован возвращает **403 Forbidden**
 
-## posts
+## /posts
 Метод для работой с данными модели Post
 
 >  Если is_active=False, то публикация считается неактивной
@@ -349,7 +349,7 @@
 ### PATCH /posts/{id}
 Обновление данных о существующем посте. Принимает те же поля и возвращает те же данные, что и  **POST /posts**
 
-## comments
+## /comments
 Метод для работы с данными модели PostComments.
 
 ### GET /comments
