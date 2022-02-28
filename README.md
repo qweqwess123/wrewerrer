@@ -6,6 +6,29 @@
 > Версия: 0.0.1
 > URL: https://testblog-app.herokuapp.com/api/
 
+# Table of contents
+
+- [Добро пожаловать в документацию testblog API](#----testblog-api)
+- [Об аутентификации и csrf защите](#---csrf-)
+- [Модели](#)
+  - [Модель - Account](#---account)
+  - [Модель - Post](#---post)
+  - [Модель - PostCategory](#---postcategory)
+  - [Модель - PostComment](#---postcomment)
+  - [Модель - PostReaction](#---postreaction)
+- [Валидация данных, передаваемых клиентом](#---)
+- [API Методы](#api-)
+  - [GET  /api/accounts](#get--apiaccounts)
+  - [POST: /accounts/](#post-accounts)
+  - [GET /accounts/{id}](#get-accountsid)
+  - [GET /accounts/me](#get-accountsme)
+  - [PATCH /accounts/{id} или PATCH /accounts/me](#patch-accountsid--patch-accountsme)
+  - [GET /accounts/login](#get-accountslogin)
+  - [GET /accounts/logout](#get-accountslogout)
+  - [posts](#posts)
+  - [comments](#comments)
+  - [/reactions](#reactions)
+
 # Об аутентификации и csrf защите
 Аутентификация в API происходит на уровне сессий.  Сессии обслуживаются с помощью cookie параметра **sessionid**. В случае ошибок аутентификации сервер возвращает **403 Forbidden**. Для авторизации используется метод /accounts/login 
 
@@ -178,6 +201,27 @@
 
 ## PATCH /accounts/{id} или PATCH /accounts/me
 Обновление информации об аккаунте. Передаются и возвращаются те же поля, что и при **POST /accounts/**
+<details>
+ <summary>Пример</summary>
+ 
+    PATCH /api/accounts/5
+
+    {"username": "newusername12"}
+
+    HTTP 200 OK
+    Allow: GET, PATCH, HEAD, OPTIONS
+    Content-Type: application/json
+    Vary: Accept
+
+    {
+        "id": 5,
+        "email": "hihiuser44@gmail.com",
+        "username": "newusername12",
+        "is_staff": false,
+        "is_active": true
+    }
+ 
+</details>
 
 ## GET /accounts/login
 Авторизует пользователя. Принимает ключи **email** и **password**. При удачной валидации возвращает те же поля, что и при **GET /accounts/me**, а при неудачной - **403 Forbidden**
@@ -205,6 +249,53 @@
 > Поля доступные только привилегированным пользователям : **is_active**
 
 > Поля доступные для фильтрации: **titiel, author__username, is_active, limit, offset**
+
+<details>
+ <summary>Пример</summary>
+ 
+    GET /api/posts?expand=categories,author&fields=id,author.username,title,content,date,categories.name
+ 
+    HTTP 200 OK
+    Allow: GET, POST, PATCH, HEAD, OPTIONS
+    Content-Type: application/json
+    Vary: Accept
+
+    [
+        {
+            "id": 2,
+            "author": {
+                "username": "q1kebuff"
+            },
+            "title": "Another post",
+            "content": "Content!",
+            "date": "2022-02-28T12:56:35.176484+03:00",
+            "categories": [
+                {
+                    "name": "anime"
+                },
+                {
+                    "name": "cinema"
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "author": {
+                "username": "q1kebuff"
+            },
+            "title": "This is post",
+            "content": "With some content",
+            "date": "2022-02-28T12:55:45.113817+03:00",
+            "categories": [
+                {
+                    "name": "cinema"
+                }
+            ]
+        }
+    ]
+ 
+</details>
+
 
 ### POST /posts
 Создание публикации, доступно только привилегированным пользователям. 
@@ -247,6 +338,35 @@
 
 > Поля, доступные для фильтрации: **post**, **author**
 
+<details>
+ <summary>Пример</summary>
+ 
+    GET /api/comments?post=2&expand=author&fields=content,author.username
+ 
+    HTTP 200 OK
+    Allow: GET, POST, HEAD, OPTIONS
+    Content-Type: application/json
+    Vary: Accept
+
+    [
+        {
+            "content": "nice!",
+            "author": {
+                "username": "q1kebuff"
+            }
+        },
+        {
+            "content": "fun",
+            "author": {
+                "username": "q1kebuff"
+            }
+        }
+    ]
+ 
+</details>
+
+
+
 ### POST /comments
 Метод для создания комментария. Доступен только авторизованным пользователям
 
@@ -275,6 +395,39 @@
 Отображает список реакций, содержащий все поля модели **PostReaction**
 
 > Поля, доступные для фильтрации: **author**, **post**, **reaction**
+
+<details>
+ <summary>Пример</summary>
+ 
+    GET /api/reactions?expand=author,post&fields=author.username,post.title,reaction
+ 
+    HTTP 200 OK
+    Allow: GET, POST, HEAD, OPTIONS
+    Content-Type: application/json
+    Vary: Accept
+
+    [
+        {
+            "author": {
+                "username": "q1kebuff"
+            },
+            "reaction": "+",
+            "post": {
+                "title": "Another post"
+            }
+        },
+        {
+            "author": {
+                "username": "q1kebuff"
+            },
+            "reaction": "-",
+            "post": {
+                "title": "This is post"
+            }
+        }
+    ]
+ 
+</details>
 
 ### POST /reactions
 Создает новую сущность модели. Поле author определяется автоматически.
