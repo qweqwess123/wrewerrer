@@ -9,25 +9,41 @@
 # Table of contents
 
 - [Добро пожаловать в документацию testblog API](#добро-пожаловать-в-документацию-testblog-api)
-- [Об аутентификации и csrf защите](#---csrf-)
+- [Об аутентификации и csrf защите](#об-аутентификации-и-csrf-защите)
 - [Модели](#модели)
   - [Модель - Account](#модель---account)
   - [Модель - Post](#модель---post)
   - [Модель - PostCategory](#модель---postcategory)
   - [Модель - PostComment](#модель---postcomment)
   - [Модель - PostReaction](#модель---postreaction)
-- [Валидация данных, передаваемых клиентом](#---)
-- [API Методы](#api-)
-  - [GET  /api/accounts](#get--apiaccounts)
-  - [POST: /accounts/](#post-accounts)
-  - [GET /accounts/{id}](#get-accountsid)
-  - [GET /accounts/me](#get-accountsme)
-  - [PATCH /accounts/{id} или PATCH /accounts/me](#patch-accountsid--patch-accountsme)
-  - [GET /accounts/login](#get-accountslogin)
-  - [GET /accounts/logout](#get-accountslogout)
-  - [posts](#posts)
+- [Валидация данных, передаваемых клиентом](#об-аутентификации-и-csrf-защите)
+- [API Методы](#api-методы)
+  - [/accounts](#api-методы)
+    - [GET  /api/accounts](#get--apiaccounts)
+    - [POST: /accounts/](#post-accounts)
+    - [Ответ: 201 Created](#-201-created)
+    - [GET /accounts/{id}](#get-accountsid)
+    - [GET /accounts/me](#get-accountsme)
+    - [PATCH /accounts/{id} или PATCH /accounts/me](#patch-accountsid--patch-accountsme)
+    - [GET /accounts/login](#get-accountslogin)
+    - [GET /accounts/logout](#get-accountslogout)
+   - [posts](#posts)
+     - [GET /posts](#get-posts)
+     - [POST /posts](#post-posts)
+     - [PATCH /posts](#patch-posts)
+     - [GET /posts/{id}](#get-postsid)
+     - [PATCH /posts/{id}](#patch-postsid)
   - [comments](#comments)
+    - [GET /comments](#get-comments)
+    - [POST /comments](#post-comments)
+    - [GET /comments/{id}](#get-commentsid)
+    - [PATCH /comments/{id}](#patch-commentsid)
+    - [DELETE /comments/{id}](#delete-commentsid)
   - [/reactions](#reactions)
+    - [GET /reactions](#get-reactions)
+    - [POST /reactions](#post-reactions)
+    - [GET /reactions/{id}](#get-reactionsid)
+    - [DELETE /reactions/{id}](#delete-reactionsid)
 
 # Об аутентификации и csrf защите
 Аутентификация в API происходит на уровне сессий.  Сессии обслуживаются с помощью cookie параметра **sessionid**. В случае ошибок аутентификации сервер возвращает **403 Forbidden**. Для авторизации используется метод /accounts/login 
@@ -139,7 +155,10 @@
 # API Методы
 В этом списке будут описаны все API методы
 
-## GET  /api/accounts
+## /accounts
+Метод используется для работы с данными модели Account а так же авторизации и деавторизации пользователей
+
+### GET  /api/accounts
 Возвращает список аккаунтов c полями модели Account
 Если запрос совершает не персонал, то поля  **email**, **is_active**  исключаются, а неактивные пользователи `(is_active=False)` не отображаются
 
